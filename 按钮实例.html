@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>实例</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> <!-- 引入VUE框架-->
+	     <style type="text/css">
+	     	#bb{
+				font-size: 25px;
+			}
+			
+			.sq-box{
+				width: 200px;
+				height: 200px;
+				border: 2px solid #0000FF;
+			}
+	     </style>
+	</head>
+	<body>
+		<div id="bb">
+			<sqe></sqe>
+			<p>这是一个案例</p>
+			<p>测试</p>
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#bb",
+				data:{
+					
+				},
+				components:{
+					sqe:{
+						data(){
+							return{
+								colorArr:['red','orange','yellow','green']
+							}
+						},
+						template:'<div> <button v-for="color in colorArr" :key="color" @click="handelClick(color)" :style="{backgroundColor:color}" >{{color}}</button>  <div class="sq-box" ref="sqBox"></div>  </div>',
+						methods:{
+							handelClick(color){
+								console.log(color)
+								console.log(this.$refs)
+								const spbox = this.$refs.sqBox
+								spbox.style.backgroundColor=color
+								
+							}
+						}
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>
